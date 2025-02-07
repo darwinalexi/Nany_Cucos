@@ -34,10 +34,10 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">Nany Cuco´s</h3>
 
   <p align="center">
-    project_description
+    Un sistema de gestión de inventarios moderno y elegante,  La pantalla principal muestra estadisticas entre otras.En la parte superior, hay una pestaña para 'Perfil'. La barra lateral presenta un menú de navegación con íconos para 'Inicio', 'Prfil' y 'Otros'.
     <br />
     <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br />
