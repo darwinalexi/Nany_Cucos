@@ -12,7 +12,6 @@ export const Update_user=({onclose, data})=>{
         nombre : data.nombre || '',
         correo :  data.correo || '',
         celular : data.celular || '',
-        clave:'',
         imagen: data.imagen || null,
         descripcion: data.descripcion || '', 
     })
@@ -24,7 +23,7 @@ export const Update_user=({onclose, data})=>{
      const NombreRef= useRef(null);
      const correoRef= useRef(null);
      const celularRef= useRef(null);
-     const claveRef= useRef(null);
+    
      const imagenRef= useRef(null);
      const descripcionRef= useRef(null);
 
@@ -35,7 +34,6 @@ export const Update_user=({onclose, data})=>{
             formData.append("nombre", NombreRef.current.value);
             formData.append("correo", correoRef.current.value);
             formData.append("celular", celularRef.current.value);
-            formData.append("clave", claveRef.current.value);
             formData.append("imagen", imagenRef.current.value);
             formData.append("decripcion", descripcionRef.current.value);
 
@@ -155,21 +153,7 @@ export const Update_user=({onclose, data})=>{
                                     onChange={handleFileChange}
                                     className="placeholder:justify-center p-3 focus:outline-none border-b border-b-[#dc2e63] w-[100%] rounded-xl cursor-pointer"
                                 />
-                                <br />
-                                <div>
-                                <label className="flex justify-center">Ingrese  La Contraseña En Caso De Que A El Administrador Pierda Las Credenciales De Acceso</label>
-                                <button type="button" onClick={visibles} className="relative  top-12 left-[92%]">
-                                    <FontAwesomeIcon icon={visible ? faEyeSlash: faEye} color="#dc2e63" className="size-7" />
-                                    </button>
-                                <input
-                                    type={visible ? "text":"password"}
-                                    name="clave"
-                                    ref={claveRef}
-                                    className=" focus:outline-none p-3 border-b border-b-[#dc2e63]   w-[100%]   rounded-xl cursor-pointer"
-                                    placeholder="Ingresa tu contraseña"
-                                    onChange={handleinput}
-                                    />
-                                </div>
+                                
                                 <br />
                                 <input 
                             type="submit" 

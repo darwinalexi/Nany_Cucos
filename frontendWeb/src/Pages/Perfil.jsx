@@ -48,7 +48,7 @@ const closemodals= async()=>{
             <SiderBar/>
        {user .map((data)=>(
        <>
-       <div className="w-[80%]  gap-2  grid grid-cols-3 relative left-[13%] mt-20">
+       <div className="w-[80%]  gap-2  grid grid-cols-3 relative left-[13%] top-32">
 
        <div className="border-r border-r-[#dc2e63] border-l border-l-[#dc2e63] border-t border-t-[#dc2e63] border-b border-b-[#dc2e63] grid h-[80%] shadow-2xl rounded-xl overflow-x-hidden overflow-y-auto">
     <h1 className="flex justify-center text-2xl p-7">Acerca De Mi</h1>

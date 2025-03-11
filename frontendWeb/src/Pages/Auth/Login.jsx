@@ -1,7 +1,7 @@
 import { useState } from "react";
 import imagen  from"../../img/logo.jpg"
 import axiosClient from "../../utils/axiosClient";
-import {useNavigate} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Swal from 'sweetalert2'
 import { faUser } from '@fortawesome/free-solid-svg-icons';
@@ -114,7 +114,7 @@ function Login(){
               placeholder="Ingresa tu contraseña"
               onChange={handinputchange}
             ></input>
-          
+          <Link to="/recuperar_contraseña" className="text-[#dc2e63]">¿Olvidaste Tu Contraseña?</Link>
            </div>
             <br />
             <input type="submit" value="Ingresar" className="bg-[#dc2e63] rounded-lg text-white  p-2 hover:cursor-pointer"/>

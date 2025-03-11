@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClose } from "@fortawesome/free-solid-svg-icons"
-import  {useState} from "react"  
+import  {useState, useEffect} from "react"  
 import DatePicker from "react-datepicker"
 import axiosClient from "../utils/axiosClient"
 import Swal from 'sweetalert2'
@@ -20,9 +20,14 @@ export const Update_Order= ({onclose, data})=>{
         precio:'',
         cantidad: data?.cantidad
     })
+    const [type, setype]= useState([])
 
  
-    
+    useEffect(()=>{
+        const datalocal= JSON.parse(localStorage.getItem('usuario','[]'))
+        const type= datalocal ? datalocal.tipo : ''; 
+        setype(type)
+    },[])
     const handinputchange = (event) => {
         const { name, value } = event.target;
     
@@ -177,16 +182,20 @@ export const Update_Order= ({onclose, data})=>{
                                         <option value="Vendido">Vendido</option>
 
                                     </select>
-                                    <label> Ingrese el precio a Pagar </label>
-                                    <br/>
-                                    <input
-                                    name="precio" 
-                                    onChange={handinputchange}
-                                    required
-                                    placeholder="Ingrese El Precio"
-                                    type="text"
-                                    className="placeholder:justify-center p-3 focus:outline-none  border-b border-b-[#dc2e63] border-t border-t-[#dc2e63]   border-r border-r-[#dc2e63]  border-l border-l-[#dc2e63] w-[100%]   rounded-xl cursor-pointer "
-                                    > </input>
+                                    {type=="Propietario(a)" &&(
+                                        <>
+                                        <label> Ingrese el precio a Pagar </label>
+                                        <br/>
+                                        <input
+                                        name="precio" 
+                                        onChange={handinputchange}
+                                        required
+                                        placeholder="Ingrese El Precio"
+                                        type="text"
+                                        className="placeholder:justify-center p-3 focus:outline-none  border-b border-b-[#dc2e63] border-t border-t-[#dc2e63]   border-r border-r-[#dc2e63]  border-l border-l-[#dc2e63] w-[100%]   rounded-xl cursor-pointer "
+                                        />
+                                        </> 
+                                    )}
                                     <br />
                                     <br />
                                     <input 

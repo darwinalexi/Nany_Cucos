@@ -58,11 +58,11 @@ export const search = async(req, res)=>{
 
 
 export const update_pedidos = async (req, res) => {
+    
     try {
         const { id } = req.params;
         const { nombre_producto, referencia, fecha_pedido, observaciones, celular, persona, estado, usuario, precio,cantidad } = req.body;
 
-        
         const [seracholder] = await pool.query("SELECT * FROM pedidos WHERE id = ?", [id]);
 
         if (seracholder.length === 0) {
@@ -79,8 +79,6 @@ export const update_pedidos = async (req, res) => {
         const usuarioFinal = usuario || seracholder[0].usuario;
         const precioFinal = precio || seracholder[0].precio;
         const cantidadFinal = cantidad || seracholder[0].cantidad;
-
-
 
         // Ejecutar la consulta de actualización
         const [actualizar] = await pool.query(
@@ -131,7 +129,6 @@ export const borrar_pedido=async(req, res)=>{
     }
 }
 
-
 export const valor_vendido = async (req, res) => {
     try {
         const [listar] = await pool.query(
@@ -147,7 +144,6 @@ export const valor_vendido = async (req, res) => {
         res.status(500).json({ mensaje: error.message });
     }
 };
-
 
 export const contarperdidos = async (req, res) => {
     try {
@@ -167,7 +163,6 @@ export const contarperdidosvendidos = async (req, res) => {
         const [resultado] = await pool.query(
             "SELECT COUNT(*) AS total_pedidos_vendidos FROM pedidos WHERE estado='Vendido'"
         );
-
         if (resultado[0].total_pedidos_vendidos === 0) {
             res.status(404).json({ mensaje: "No se encontraron pedidos vendidos" });
         } else {

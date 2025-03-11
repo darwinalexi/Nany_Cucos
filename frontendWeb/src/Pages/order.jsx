@@ -87,8 +87,8 @@ export const Order=()=>{
         width:"10%"
     },
     {
-        name:"Referencia",
-        selector: row => row.referencia,
+        name:"Estado",
+        selector: row => row.estado,
         width:"10%"
     },
     {
