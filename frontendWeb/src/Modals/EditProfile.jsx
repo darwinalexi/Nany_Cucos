@@ -5,8 +5,6 @@ import axiosClient from "../utils/axiosClient"
 import Swal from "sweetalert2"
 
 export const EditProfile=({onclose, data})=>{
-
-    console.log("Datos recibidos en EditProfile:", data);
     
     const [visible, setvisible]= useState(false);
     const [information, setinformation]= useState({
@@ -30,8 +28,27 @@ export const EditProfile=({onclose, data})=>{
      const descripcionRef= useRef(null);
 
 
+    
+
      const update_profile=async(e)=>{
         e.preventDefault();
+        if(information.celular.startsWith('-')){
+            Swal.fire({
+                title:'Advertencia',
+                text:"no se puede registrar valores negativos",
+                icon:'warning',
+            })
+            return;
+        }
+
+        if(information.celular.length>10 || information.celular.length < 10 ){
+            Swal.fire({
+                title:'Advertencia',
+                text:"No Pose la Longitud Adecuada, Asegurese de que Contenga 10 Digitos El Numero de Celular",
+                icon:'warning',
+            })
+            return;
+        }
         try {
             const formData = new FormData();
             formData.append("nombre", NombreRef.current.value);

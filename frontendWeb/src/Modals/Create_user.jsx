@@ -9,6 +9,7 @@ export const Create_user=({onclose})=>{
     const [visible, setvisible]= useState(false);
 
 const [information, setinformation]= useState({
+    identificacion:'',
     nombre :'',
     correo : '',
     celular : '',
@@ -45,7 +46,7 @@ const visibles=()=>{
  const handleFileChange = (e) => {
     // Para gestionar el cambio de archivo de imagen
     const file = e.target.files[0];
-    setInformation((prevData) => ({
+    setinformation((prevData) => ({
         ...prevData,
         imagen: file
     }));
@@ -54,6 +55,34 @@ const visibles=()=>{
 const  create_users=async(e)=>{
     e.preventDefault();
 
+    if(information.identificacion.length< 6 || information.identificacion.length > 13 ){
+        Swal.fire({
+            title:'Advertencia',
+            text:"No Pose la Longitud Adecuada, No parece ser una identificacion, debe ser mayor a 6 digitos y menor de13",
+            icon:'warning',
+        })
+        return;
+    }
+
+if(information.celular.startsWith('-')){
+            Swal.fire({
+                title:'Advertencia',
+                text:"no se puede registrar valores negativos",
+                icon:'warning',
+            })
+            return;
+        }
+
+        if(information.celular.length>10 || information.celular.length < 10 ){
+            Swal.fire({
+                title:'Advertencia',
+                text:"No Pose la Longitud Adecuada, Asegurese de que Contenga 10 Digitos El Numero de Celular",
+                icon:'warning',
+            })
+            return;
+        }
+
+        
     try {
         const formData = new FormData();
         formData.append("identificacion", identificacionRef.current.value);
@@ -171,6 +200,7 @@ const  create_users=async(e)=>{
                             <input
                                 type="file"
                                 ref={imagenRef}
+                                required
                                 onChange={handleFileChange}
                                 className="placeholder:justify-center p-3 focus:outline-none border-b border-b-[#dc2e63] w-[100%] rounded-xl cursor-pointer"
                             />
@@ -184,6 +214,7 @@ const  create_users=async(e)=>{
                                 type={visible ? "text":"password"}
                                 name="clave"
                                 ref={claveRef}
+                                required
                                 className=" focus:outline-none p-3 border-b border-b-[#dc2e63]   w-[100%]   rounded-xl cursor-pointer"
                                 placeholder="Ingresa tu contraseña"
                                 onChange={handleinput}

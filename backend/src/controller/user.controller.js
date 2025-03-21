@@ -91,7 +91,7 @@ export const show_user= async(req, res)=>{
 export const update_user = async (req, res) => {
     try {
         const { identificacion } = req.params;
-        const { nombre, correo, celular, descripcion } = req.body;
+        const { nombre, correo, celular, descripcion, clave } = req.body;
        
         let imagen;
 
