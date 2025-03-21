@@ -11,3 +11,4 @@
 
 <h1>frontendWeb</h1>
 <p>Se debe abrir la terminal y ingresar a la carpeta <strong>cd ../directorio/frontendWeb </strong>  y por ultimo dar npm install cuando esta dentro del directorio</p>
+<li><strong>Nota Importante</strong> a cada una de las carpetas backend y frontend se debe poner el siguiente comando para que los servcios corran npm run dev</li>
